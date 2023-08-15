@@ -174,7 +174,7 @@ input {
     font-size: 21px;
 }
 
-table {
+.resultsTable {
     color: rgb(248, 248, 248);
     text-align: center;
     font-size: large;
@@ -185,7 +185,20 @@ table {
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 
 }
+.genreTable {
+    background-color: rgba(99, 16, 62, 0.486);
+    color: aliceblue;
+    width: 200px;
+    height: 350px;
+}
 
+.selectGenre {
+    width: 250px;
+    height: 50px;
+    border-radius: 5px;
+    font-family:'Trebuchet MS', sans-serif;
+    font-size: 21px;
+}
 
 tbody tr:hover {
     background-color: rgba(255, 255, 255, 0.856);

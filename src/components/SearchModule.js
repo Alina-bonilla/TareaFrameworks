@@ -14,6 +14,11 @@ function SearchModule() {
         setActual(results);
     }
 
+    const list = [
+        "asdasdas",
+        "sddfsdf"
+    ]
+
     const showModal = (value) => {
         setOpenModal(value);
     }
@@ -51,6 +56,12 @@ function SearchModule() {
                     <h1>DETALLES DE PELICULA</h1>
                 </div>
                 <div>
+                    <h2 style={{position:'absolute', left:"70%"}}>GENEROS</h2>
+                    <table className="genreTable" style={{position:'absolute', left:"63%",top:"170px"}}>
+                        <thbody>
+                            
+                        </thbody>
+                    </table>
                     <h2 style={{position:'absolute', left:"10%"}}>ID:</h2>
                     <h2 style={{position:'absolute', left:"15%"}}>{actual.id}</h2>
 
@@ -86,15 +97,22 @@ function SearchModule() {
                     <h2 style={{position:"absolute", top:"200px", left:"640px"}}>IDIOMA</h2>
                     <input style={{position:'absolute', width:"250px", height:"50px", top:"270px", left:"550px"}}></input>
 
-                    <h2 style={{position:"absolute", top:"350px", left:"260px"}}>FECHA</h2>
-                    <input style={{position:'absolute', width:"250px", height:"50px", top:"420px", left:"180px"}}></input>
+                    <h2 type="datetime-local" style={{position:"absolute", top:"350px", left:"260px"}}>FECHA</h2>
+                    <input type='datetime-local' style={{position:'absolute', width:"250px", height:"50px", top:"420px", left:"180px"}}></input>
 
                     <h2 style={{position:"absolute", top:"350px", left:"640px"}}>GENERO</h2>
-                    <input style={{position:'absolute', width:"250px", height:"50px", top:"420px", left:"550px"}}></input>
-
+                    <select  className="selectGenre" style={{position:"absolute",top:"420px", left:"550px", textAlign:"center"}}>
+                        <option>DRAMA</option>
+                        <option>ACCION</option>
+                        <option>COMEDIA</option>
+                        <option>FANTASIA</option>
+                        <option>SUSPENSO</option>
+                        <option>TERROR</option>
+                    </select>
+                
                     <button className="buttons" style={{top: "600px", left:"350px"}}>BUSCAR</button>
                     <div className="resultsSquare">
-                        <table style={{position:"absolute"}} {...getTableProps()}>
+                        <table className="resultsTable" style={{position:"absolute"}} {...getTableProps()}>
                             <thead>
                                 {headerGroups.map((headerGroup)=> (
                                     <tr {...headerGroup.getHeaderGroupProps()} className="table-header">
