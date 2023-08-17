@@ -1,31 +1,72 @@
 import './style/components.css';
 import NavBar from './NavBar';
+import axios from 'axios';
+import { useState } from 'react';
 
 function AddModule() {
+
+    const [titulo, setTitulo] = useState("");
+    const [idioma, setIdioma] = useState("");
+    const [director, setDirector] = useState("");
+    const [fecha, setFecha] = useState("1901-01-01");
+    const [genero, setGenero] = useState("");
+    const [duracion, setDuracion] = useState(0);
+    const [edad, setEdad] = useState(0);
+
+    const registro = () => {
+            axios.post("http://localhost:3307/agregarpeliculas", {
+            titulo:titulo,
+            idioma:idioma,
+            director:director,
+            fecha:fecha,
+            genero:genero,
+            duracion:duracion,
+            edad:edad
+            }).then((response) => {
+                console.log(response);
+                alert("SE REGISTRO UNA PELICULA DE FORMA EXITOSA!!")
+            });
+    
+        
+        
+    }
+    
+
     return (
         <div>
             <div className="operativeFont">
                 <NavBar/>
                 <div className="formsSquare">
-                    <h2 style={{position:"absolute", top:"200px", left:"560px"}}>TITULO</h2>
-                    <input style={{position:'absolute', width:"250px", height:"50px", top:"270px", left:"480px"}}></input>
+                    <h2 style={{position:"absolute", top:"100px", left:"560px"}}>TITULO</h2>
+                    <input className="input" onChange={(e) => {setTitulo(e.target.value)}} style={{position:'absolute', width:"250px", height:"50px", top:"170px", left:"480px"}}></input>
 
-                    <h2 style={{position:"absolute", top:"200px", left:"940px"}}>IDIOMA</h2>
-                    <input style={{position:'absolute', width:"250px", height:"50px", top:"270px", left:"850px"}}></input>
+                    <h2 style={{position:"absolute", top:"100px", left:"940px"}}>IDIOMA</h2>
+                    <input className="input" onChange={(e) => {setIdioma(e.target.value)}} style={{position:'absolute', width:"250px", height:"50px", top:"170px", left:"850px"}}></input>
 
-                    <h2 style={{position:"absolute", top:"200px", left:"1280px"}}>DIRECTOR</h2>
-                    <input style={{position:'absolute', width:"250px", height:"50px", top:"270px", left:"1210px"}}></input>
+                    <h2 style={{position:"absolute", top:"100px", left:"1280px"}}>DIRECTOR</h2>
+                    <input className="input" onChange={(e) => {setDirector(e.target.value)}} style={{position:'absolute', width:"250px", height:"50px", top:"170px", left:"1210px"}}></input>
 
-                    <h2 style={{position:"absolute", top:"350px", left:"560px"}}>FECHA</h2>
-                    <input style={{position:'absolute', width:"250px", height:"50px", top:"420px", left:"480px"}}></input>
+                    <h2 style={{position:"absolute", top:"250px", left:"560px"}}>FECHA</h2>
+                    <input className="input" onChange={(e) => {setFecha(e.target.value)}} type='date' style={{position:'absolute', width:"250px", height:"50px", top:"320px", left:"480px"}}></input>
 
-                    <h2 style={{position:"absolute", top:"350px", left:"940px"}}>GENERO</h2>
-                    <input style={{position:'absolute', width:"250px", height:"50px", top:"420px", left:"850px"}}></input>
+                    <h2 style={{position:"absolute", top:"250px", left:"940px"}}>GENERO</h2>
+                    <select  className="selectGenre" onChange={(e) => {setGenero(e.target.value)}} style={{position:"absolute",top:"320px", left:"855px", textAlign:"center"}}>
+                        <option></option>
+                        <option>DRAMA</option>
+                        <option>ACCION</option>
+                        <option>COMEDIA</option>
+                        <option>FANTASIA</option>
+                        <option>SUSPENSO</option>
+                        <option>TERROR</option>
+                    </select>
 
-                    <h2 style={{position:"absolute", top:"350px", left:"1280px"}}>DURACION</h2>
-                    <input style={{position:'absolute', width:"250px", height:"50px", top:"420px", left:"1210px"}}></input>
+                    <h2 style={{position:"absolute", top:"250px", left:"1280px"}}>DURACION</h2>
+                    <input type='number' onChange={(e) => {setDuracion(e.target.value)}} style={{position:'absolute', width:"250px", height:"50px", top:"320px", left:"1210px"}}></input>
 
-                    <button className="buttons" style={{top: "600px", left:"830px"}}>AGREGAR</button>
+                    <h2 style={{position:"absolute", top:"400px", left:"880px"}}>EDAD REQUERIDA</h2>
+                    <input type='number' onChange={(e) => {setEdad(e.target.value)}} style={{position:'absolute', width:"250px", height:"50px", top:"480px", left:"852px"}}></input>
+
+                    <button className="buttons" onClick={registro} style={{top: "600px", left:"830px"}}>AGREGAR</button>
                 </div>
             </div>
         </div>
